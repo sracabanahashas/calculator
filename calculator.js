@@ -27,3 +27,21 @@ const operate = function(a, operator, b) {
         default: console.log("Can't do that")
     }
 }
+
+let display = document.querySelector('div');
+let displayValue = 0;
+let btn = document.querySelector('#wrapper');
+
+display.textContent = displayValue;
+
+btn.addEventListener('click', (e) => {
+    const isButton = e.target.nodeName === 'BUTTON';
+    if (!isButton) {
+    return;
+  }
+    console.dir(e.target.id)
+    displayValue = e.target.id;
+    if (displayValue == 1) {
+        display.textContent = displayValue;
+    }
+});
