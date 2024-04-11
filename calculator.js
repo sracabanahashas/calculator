@@ -39,9 +39,11 @@ btn.addEventListener('click', (e) => {
     if (!isButton) {
     return;
   }
-    console.dir(e.target.id)
+    console.log(e.target.id)
     displayValue = e.target.id;
-    if (displayValue == 1) {
+    if (isNaN(displayValue)) {return isNaN(displayValue)}
+    else if ((typeof Number(displayValue)) === 'number') {
+        console.log(Number(displayValue));
         display.textContent = displayValue;
     }
 });
