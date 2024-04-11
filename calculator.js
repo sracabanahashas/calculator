@@ -39,11 +39,16 @@ btn.addEventListener('click', (e) => {
     if (!isButton) {
     return;
   }
+   
+
     console.log(e.target.id)
-    displayValue = e.target.id;
-    if (isNaN(displayValue)) {return isNaN(displayValue)}
-    else if ((typeof Number(displayValue)) === 'number') {
-        console.log(Number(displayValue));
-        display.textContent = displayValue;
+    inputValue = e.target.id;
+    if (isNaN(inputValue)) {return isNaN(inputValue)}
+    else if ((typeof Number(inputValue)) === 'number') {
+        console.log(Number(inputValue));
+        if (display.textContent == 0) {
+            display.textContent = ''
+        };
+        display.textContent += inputValue;
     }
 });
