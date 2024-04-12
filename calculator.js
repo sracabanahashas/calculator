@@ -17,6 +17,7 @@ const divide = function(a, b) {
 let firstNumber;
 let secondNumber;
 let operator;
+let equation;
 
 const operate = function(a, operator, b) {
     switch (operator) {
@@ -43,12 +44,37 @@ btn.addEventListener('click', (e) => {
 
     console.log(e.target.id)
     inputValue = e.target.id;
-    if (isNaN(inputValue)) {return isNaN(inputValue)}
+
+    if (isNaN(inputValue)) {
+        if (inputValue !== '=') {
+        operator = inputValue;
+        firstNumber = displayValue;
+        display.textContent = 0; 
+        }
+        if (inputValue === '=') {
+            console.log(equation);
+            console.log(operator);
+            display.textContent = operate(firstNumber, operator, secondNumber);
+        }
+        return;
+    }
+
     else if ((typeof Number(inputValue)) === 'number') {
         console.log(Number(inputValue));
+
         if (display.textContent == 0) {
             display.textContent = ''
         };
+
         display.textContent += inputValue;
+        displayValue = display.textContent;
+        secondNumber = displayValue;
+
     }
+
+console.log(firstNumber, operator, secondNumber);
+equation = firstNumber + operator + secondNumber;
+
+    
 });
+
