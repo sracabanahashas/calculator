@@ -46,15 +46,25 @@ btn.addEventListener('click', (e) => {
     inputValue = e.target.id;
 
     if (isNaN(inputValue)) {
+        if (inputValue == 'Clear') {
+            firstNumber = '';
+            secondNumber = '';
+            operator = '';
+            display.textContent = 0; 
+            return;
+        }
         if (inputValue !== '=') {
+            
         operator = inputValue;
         firstNumber = displayValue;
         display.textContent = 0; 
+
         }
         if (inputValue === '=') {
             console.log(equation);
             console.log(operator);
             display.textContent = operate(firstNumber, operator, secondNumber);
+            displayValue = display.textContent;
         }
         return;
     }
