@@ -18,6 +18,7 @@ let firstNumber;
 let secondNumber;
 let operator;
 let equation;
+let resultValue;
 
 const operate = function(a, operator, b) {
     switch (operator) {
@@ -41,7 +42,7 @@ btn.addEventListener('click', (e) => {
     return;
   }
    
-
+    console.log(firstNumber, operator, secondNumber);
     console.log(e.target.id)
     inputValue = e.target.id;
 
@@ -54,10 +55,21 @@ btn.addEventListener('click', (e) => {
             return;
         }
         if (inputValue !== '=') {
+            if (typeof firstNumber == 'undefined') {
+                display.textContent = 0;
+            }
             
-        operator = inputValue;
-        firstNumber = displayValue;
-        display.textContent = 0; 
+            
+            resultValue = operate(firstNumber, operator, secondNumber);
+            if (typeof resultValue == 'number') {
+                display.textContent = resultValue;
+                firstNumber = resultValue;
+                console.log("This shit working?")
+                operator = inputValue;
+                return;
+            }
+            operator = inputValue;
+            firstNumber = displayValue;
 
         }
         if (inputValue === '=') {
@@ -71,7 +83,10 @@ btn.addEventListener('click', (e) => {
 
     else if ((typeof Number(inputValue)) === 'number') {
         console.log(Number(inputValue));
-
+        
+        if (typeof resultValue == 'number') {
+            display.textContent = 0;
+        }
         if (display.textContent == 0) {
             display.textContent = ''
         };
@@ -80,11 +95,12 @@ btn.addEventListener('click', (e) => {
         displayValue = display.textContent;
         secondNumber = displayValue;
 
+        
     }
 
-console.log(firstNumber, operator, secondNumber);
-equation = firstNumber + operator + secondNumber;
 
+    equation = firstNumber + operator + secondNumber;
+    console.log(firstNumber, operator, secondNumber);
     
 });
 
