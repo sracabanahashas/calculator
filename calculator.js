@@ -1,5 +1,5 @@
 const add = function(a, b) {
-	return (a + b);
+	return (Number(a) + Number(b));
 };
 
 const subtract = function(a, b) {
@@ -11,6 +11,10 @@ const multiply = function(a, b) {
 };
 
 const divide = function(a, b) {
+    if (b == 0) {
+        alert('Nice try, smartass');
+        return;
+    };
 	return (a / b);
 };
 
@@ -26,7 +30,7 @@ const operate = function(a, operator, b) {
         case '-': return subtract(a, b);
         case '*': return multiply(a, b);
         case '/': return divide(a, b);
-        default: console.log("Can't do that")
+        default: console.log("Can't do that"); return b;
     }
 }
 
@@ -51,6 +55,8 @@ btn.addEventListener('click', (e) => {
             firstNumber = '';
             secondNumber = '';
             operator = '';
+            resultValue = '';
+            displayValue = '';
             display.textContent = 0; 
             return;
         }
@@ -77,6 +83,7 @@ btn.addEventListener('click', (e) => {
             console.log(operator);
             display.textContent = operate(firstNumber, operator, secondNumber);
             displayValue = display.textContent;
+            
         }
         return;
     }
