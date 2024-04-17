@@ -50,16 +50,21 @@ btn.addEventListener('click', (e) => {
     console.log(e.target.id)
     inputValue = e.target.id;
 
+    // Operator and clear button inputs //
     if (isNaN(inputValue)) {
+
+        // Clear button input //
         if (inputValue == 'Clear') {
             firstNumber = '';
             secondNumber = '';
             operator = '';
             resultValue = '';
-            displayValue = '';
+            displayValue = '0';
             display.textContent = 0; 
             return;
         }
+        
+        // Operator buttons input //
         if (inputValue !== '=') {
             if (typeof firstNumber == 'undefined') {
                 display.textContent = 0;
@@ -70,7 +75,7 @@ btn.addEventListener('click', (e) => {
             if (typeof resultValue == 'number') {
                 display.textContent = resultValue;
                 firstNumber = resultValue;
-                console.log("This shit working?")
+                console.log("display result")
                 operator = inputValue;
                 return;
             }
@@ -78,6 +83,8 @@ btn.addEventListener('click', (e) => {
             firstNumber = displayValue;
 
         }
+
+        // Equals button input // 
         if (inputValue === '=') {
             console.log(equation);
             console.log(operator);
@@ -88,14 +95,17 @@ btn.addEventListener('click', (e) => {
         return;
     }
 
+    // Number button input //
     else if ((typeof Number(inputValue)) === 'number') {
         console.log(Number(inputValue));
         
         if (typeof resultValue == 'number') {
             display.textContent = 0;
+            
         }
         if (display.textContent == 0) {
-            display.textContent = ''
+            display.textContent = '';
+            console.log('reset display');
         };
 
         display.textContent += inputValue;
