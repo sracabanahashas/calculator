@@ -12,14 +12,14 @@ const multiply = function(a, b) {
 
 const divide = function(a, b) {
     if (b == 0) {
-        alert('Nice try, smartass');
+        alert("We don't divide by zero in this household.");
         return;
     };
 	return (a / b);
 };
 
-let firstNumber = 0;
-let secondNumber = 0;
+let firstNumber = '';
+let secondNumber = '';
 let operator;
 let equation;
 let resultValue;
@@ -55,8 +55,8 @@ btn.addEventListener('click', (e) => {
 
         // Clear button input //
         if (inputValue == 'Clear') {
-            firstNumber = 0;
-            secondNumber = 0;
+            firstNumber = '';
+            secondNumber = '';
             operator = '';
             resultValue = '';
             displayValue = 0;
@@ -81,7 +81,7 @@ btn.addEventListener('click', (e) => {
             }
             operator = inputValue;
             firstNumber = displayValue;
-            secondNumber = 0;
+            secondNumber = '';
 
         }
 
@@ -91,6 +91,9 @@ btn.addEventListener('click', (e) => {
             console.log(operator);
             displayValue = operate(firstNumber, operator, secondNumber);
             display.textContent = displayValue;
+            if (displayValue == '') {
+                display.textContent = 0
+            };
             
         }
         return;
@@ -106,7 +109,7 @@ btn.addEventListener('click', (e) => {
         };*/
         
         if (typeof resultValue == 'number') {
-            secondNumber = 0;
+            secondNumber = '';
             
         }
 
