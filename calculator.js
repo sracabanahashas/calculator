@@ -18,8 +18,8 @@ const divide = function(a, b) {
 	return (a / b);
 };
 
-let firstNumber;
-let secondNumber;
+let firstNumber = 0;
+let secondNumber = 0;
 let operator;
 let equation;
 let resultValue;
@@ -55,11 +55,11 @@ btn.addEventListener('click', (e) => {
 
         // Clear button input //
         if (inputValue == 'Clear') {
-            firstNumber = '';
-            secondNumber = '';
+            firstNumber = 0;
+            secondNumber = 0;
             operator = '';
             resultValue = '';
-            displayValue = '0';
+            displayValue = 0;
             display.textContent = 0; 
             return;
         }
@@ -81,6 +81,7 @@ btn.addEventListener('click', (e) => {
             }
             operator = inputValue;
             firstNumber = displayValue;
+            secondNumber = 0;
 
         }
 
@@ -88,8 +89,8 @@ btn.addEventListener('click', (e) => {
         if (inputValue === '=') {
             console.log(equation);
             console.log(operator);
-            display.textContent = operate(firstNumber, operator, secondNumber);
-            displayValue = display.textContent;
+            displayValue = operate(firstNumber, operator, secondNumber);
+            display.textContent = displayValue;
             
         }
         return;
@@ -98,26 +99,29 @@ btn.addEventListener('click', (e) => {
     // Number button input //
     else if ((typeof Number(inputValue)) === 'number') {
         console.log(Number(inputValue));
-        
-        if (typeof resultValue == 'number') {
-            display.textContent = 0;
-            
-        }
-        if (display.textContent == 0) {
+       
+        /*if (displayValue == 0) {
             display.textContent = '';
             console.log('reset display');
-        };
+        };*/
+        
+        if (typeof resultValue == 'number') {
+            secondNumber = 0;
+            
+        }
 
-        display.textContent += inputValue;
-        displayValue = display.textContent;
-        secondNumber = displayValue;
+        secondNumber += inputValue;
+       
+        displayValue = secondNumber;
 
         
     }
 
+    display.textContent = displayValue;
+    resultValue = '';
 
     equation = firstNumber + operator + secondNumber;
-    console.log(firstNumber, operator, secondNumber);
+    console.log(resultValue, displayValue, firstNumber, operator, secondNumber);
     
 });
 
