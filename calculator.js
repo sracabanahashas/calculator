@@ -34,7 +34,7 @@ const operate = function(a, operator, b) {
     }
 }
 
-let display = document.querySelector('div');
+let display = document.querySelector('#display');
 let displayValue = 0;
 let btn = document.querySelector('#wrapper');
 
